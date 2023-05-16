@@ -32,6 +32,13 @@ function App() {
       date: new Date(2023, 4, 21),
       locationOfExpenditure: "Pune",
     },
+    {
+      id: "e5",
+      title: "New Home",
+      amount: 242754.78,
+      date: new Date(2023, 6, 7),
+      locationOfExpenditure: "Manali",
+    },
   ];
 
   return (
