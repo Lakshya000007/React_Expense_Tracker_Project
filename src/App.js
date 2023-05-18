@@ -1,4 +1,5 @@
 //import "./App.css";
+import ExpenseForm from "./components/AddExpense/ExpenseForm";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Card";
 
@@ -42,19 +43,26 @@ function App() {
   ];
 
   return (
-    <Card>
-      <h1>App Component</h1>
-      {expenses.map((expense) => {
-        return (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-            location={expense.locationOfExpenditure}
-          />
-        );
-      })}
-    </Card>
+    <>
+      <Card>
+        <h2>Fill Form to add Expense</h2>
+        <ExpenseForm />
+      </Card>
+
+      <Card>
+        <h1>App Component</h1>
+        {expenses.map((expense) => {
+          return (
+            <ExpenseItem
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+              location={expense.locationOfExpenditure}
+            />
+          );
+        })}
+      </Card>
+    </>
   );
 }
 
