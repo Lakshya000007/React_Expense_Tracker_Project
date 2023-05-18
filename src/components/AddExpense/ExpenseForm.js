@@ -2,30 +2,57 @@ import { useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState("");
-  const [enteredAmount, setEnteredAmount] = useState("");
-  const [enteredLocation, setEnteredLocation] = useState("");
-  const [enteredDate, setEnteredDate] = useState("");
+  // const [enteredTitle, setEnteredTitle] = useState("");
+  // const [enteredAmount, setEnteredAmount] = useState("");
+  // const [enteredLocation, setEnteredLocation] = useState("");
+  // const [enteredDate, setEnteredDate] = useState("");
+
+  const [formDetails, setFormDetails] = useState({
+    enteredTitle: "",
+    enteredAmount: "",
+    enteredLocation: "",
+    enteredDate: "",
+  });
 
   const handleTitle = (event) => {
-    setEnteredTitle(event.target.value);
+    setFormDetails((prevState) => {
+      return { ...prevState, enteredTitle: event.target.value };
+    });
   };
 
   const handleAmount = (event) => {
-    setEnteredAmount(event.target.value);
+    setFormDetails((prevState) => {
+      return { ...prevState, enteredAmount: event.target.value };
+    });
   };
 
   const handleDate = (event) => {
-    setEnteredDate(event.target.value);
+    setFormDetails((prevState) => {
+      return { ...prevState, enteredDate: event.target.value };
+    });
   };
 
   const handleLocation = (event) => {
-    setEnteredLocation(event.target.value);
+    setFormDetails((prevState) => {
+      return { ...prevState, enteredLocation: event.target.value };
+    });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const expenseData = {
+      title: formDetails.enteredTitle,
+      amount: formDetails.enteredAmount,
+      date: new Date(formDetails.enteredDate),
+      location: formDetails.enteredLocation,
+    };
+
+    console.log(expenseData);
   };
 
   return (
     <div>
-      <form action="" className="form">
+      <form action="" className="form" onSubmit={handleSubmit}>
         <div className="col">
           <label htmlFor="title">Enter Title</label>
           <input type="text" id="title" onChange={handleTitle} />
@@ -42,7 +69,9 @@ const ExpenseForm = () => {
           <label htmlFor="location">Enter Location</label>
           <input type="location" id="location" onChange={handleLocation} />
         </div>
-        <button className="col">Add New Expense</button>
+        <button className="col" type="submit">
+          Add New Expense
+        </button>
       </form>
     </div>
   );
