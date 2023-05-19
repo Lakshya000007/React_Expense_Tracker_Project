@@ -1,23 +1,23 @@
 import "./App.css";
 import { useState } from "react";
 import ExpenseForm from "./components/AddExpense/ExpenseForm";
-import ExpenseItem from "./components/Expenses/ExpenseItem";
+//import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Card";
 import ExpensesFilter from "./components/Expenses/ExpensesFilter";
+import ExpenseList from "./components/Expenses/ExpenseList";
 
 function App() {
   const [expenses, setExpense] = useState([]);
 
-  const [filteredYear, setFilteredYear] = useState("2020");
-
-  const filterChangeHandler = (selectedYear) => {
-    setFilteredYear(selectedYear);
-  };
+  const [filteredYear, setFilteredYear] = useState("All");
 
   const addExpenseHandler = (newExpense) => {
     setExpense([...expenses, newExpense]);
   };
 
+  const filterChangeHandler = (selectedYear) => {
+    setFilteredYear(selectedYear);
+  };
   console.log(expenses);
 
   return (
@@ -36,17 +36,7 @@ function App() {
           <center>Expenses List</center>
         </h1>
 
-        {expenses.map((expense) => {
-          return (
-            <ExpenseItem
-              title={expense.title}
-              amount={expense.amount}
-              date={expense.date}
-              location={expense.location}
-              key={expense.id}
-            />
-          );
-        })}
+        <ExpenseList expenses={expenses} year={filteredYear} />
       </Card>
     </>
   );

@@ -112,6 +112,8 @@ const ExpenseForm = ({ addExpenseHandler }) => {
             id="date"
             onChange={handleDate}
             value={formDetails.enteredDate}
+            min="2019-01-01"
+            max="2022-12-31"
             required
           />
         </div>
