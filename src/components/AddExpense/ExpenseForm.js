@@ -39,6 +39,7 @@ const ExpenseForm = ({ addExpenseHandler }) => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
     const expenseData = {
       title: formDetails.enteredTitle,
       amount: formDetails.enteredAmount,
@@ -63,7 +64,6 @@ const ExpenseForm = ({ addExpenseHandler }) => {
     }
 
     console.log(expenseData);
-    event.preventDefault();
   };
 
   const handleClick = (event) => {

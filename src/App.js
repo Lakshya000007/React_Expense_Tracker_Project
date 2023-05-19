@@ -1,4 +1,4 @@
-//import "./App.css";
+import "./App.css";
 import { useState } from "react";
 import ExpenseForm from "./components/AddExpense/ExpenseForm";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
@@ -15,13 +15,16 @@ function App() {
 
   return (
     <>
-      <Card>
-        <h2>Fill Form to add Expense</h2>
-        <ExpenseForm addExpenseHandler={addExpenseHandler} />
-      </Card>
+      <h2>
+        <center>Fill Form to add Expense</center>
+      </h2>
+      <ExpenseForm addExpenseHandler={addExpenseHandler} />
 
       <Card>
-        <h1>App Component</h1>
+        <h1>
+          <center>App Component</center>
+        </h1>
+
         {expenses.map((expense) => {
           return (
             <ExpenseItem
@@ -29,6 +32,7 @@ function App() {
               amount={expense.amount}
               date={expense.date}
               location={expense.location}
+              key={expense.id}
             />
           );
         })}
