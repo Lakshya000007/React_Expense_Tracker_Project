@@ -6,6 +6,25 @@ const ExpenseList = ({ expenses, year }) => {
       return <h3>Start Adding data...</h3>;
     }
 
+    if (expenses.length === 1) {
+      return (
+        <>
+          {expenses.map((expense) => {
+            return (
+              <ExpenseItem
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+                location={expense.location}
+                key={expense.id}
+              />
+            );
+          })}
+          <h3>Only single Expense here. Please add more...</h3>
+        </>
+      );
+    }
+
     return (
       <>
         {expenses.map((expense) => {
