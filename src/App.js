@@ -1,52 +1,23 @@
 //import "./App.css";
+import { useState } from "react";
 import ExpenseForm from "./components/AddExpense/ExpenseForm";
 import ExpenseItem from "./components/Expenses/ExpenseItem";
 import Card from "./components/UI/Card";
 
 function App() {
-  const expenses = [
-    {
-      id: "e1",
-      title: "Super Bike",
-      amount: 9754.78,
-      date: new Date(2020, 7, 14),
-      locationOfExpenditure: "Banglore",
-    },
-    {
-      id: "e2",
-      title: "Super Car",
-      amount: 21254.78,
-      date: new Date(2020, 6, 24),
-      locationOfExpenditure: "Chennai",
-    },
-    {
-      id: "e3",
-      title: "Badminton",
-      amount: 129.78,
-      date: new Date(2023, 9, 4),
-      locationOfExpenditure: "Hyderabad",
-    },
-    {
-      id: "e4",
-      title: "Shoes",
-      amount: 98.78,
-      date: new Date(2023, 4, 21),
-      locationOfExpenditure: "Pune",
-    },
-    {
-      id: "e5",
-      title: "New Home",
-      amount: 242754.78,
-      date: new Date(2023, 6, 7),
-      locationOfExpenditure: "Manali",
-    },
-  ];
+  const [expenses, setExpense] = useState([]);
+
+  const addExpenseHandler = (newExpense) => {
+    setExpense([...expenses, newExpense]);
+  };
+
+  console.log(expenses);
 
   return (
     <>
       <Card>
         <h2>Fill Form to add Expense</h2>
-        <ExpenseForm />
+        <ExpenseForm addExpenseHandler={addExpenseHandler} />
       </Card>
 
       <Card>
@@ -57,7 +28,7 @@ function App() {
               title={expense.title}
               amount={expense.amount}
               date={expense.date}
-              location={expense.locationOfExpenditure}
+              location={expense.location}
             />
           );
         })}
