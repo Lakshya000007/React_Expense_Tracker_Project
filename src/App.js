@@ -5,6 +5,7 @@ import ExpenseForm from "./components/AddExpense/ExpenseForm";
 import Card from "./components/UI/Card";
 import ExpensesFilter from "./components/Expenses/ExpensesFilter";
 import ExpenseList from "./components/Expenses/ExpenseList";
+import ExpensesChart from "../src/components/Expenses/ExpensesChart";
 
 function App() {
   const [expenses, setExpense] = useState([]);
@@ -38,6 +39,13 @@ function App() {
 
         <ExpenseList expenses={expenses} year={filteredYear} />
       </Card>
+      {/* <ExpensesChart
+        expenses={[
+          { date: new Date("2022-03-25"), amount: 500 },
+          { date: new Date("2022-04-25"), amount: 200 },
+          { date: new Date("2022-01-25"), amount: 1000 },
+        ]}
+      /> */}
     </>
   );
 }

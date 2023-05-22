@@ -66,11 +66,6 @@ const ExpenseForm = ({ addExpenseHandler }) => {
         enteredLocation: "",
         enteredDate: "",
       });
-
-      setMsg("");
-    } else {
-      setMsg("Fill all form fields to submit");
-      console.log(msg);
     }
 
     console.log(expenseData);
@@ -91,7 +86,14 @@ const ExpenseForm = ({ addExpenseHandler }) => {
       expenseData.date.toString().trim() === {} ||
       expenseData.location.trim() === ""
     ) {
-      event.preventDefault();
+      //event.preventDefault();
+      setMsg("Fill all form fields to submit");
+      setTimeout(() => {
+        setMsg("");
+      }, 1500);
+    } else {
+      setMsg("");
+      console.log(msg);
     }
   };
 
